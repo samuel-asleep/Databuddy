@@ -2,7 +2,8 @@ FROM oven/bun:1
 
 WORKDIR /app
 COPY . .
-
+ARG REDIS_URL
+ENV REDIS_URL=$REDIS_URL
 RUN bun install \
  && bun run --cwd packages/sdk build \
  && bun run --cwd apps/dashboard build
